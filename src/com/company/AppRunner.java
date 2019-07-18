@@ -8,7 +8,7 @@ import com.company.task4.BoxProcessing;
 import java.util.Scanner;
 
 public class AppRunner {
-    public void Run() {
+    public void run() {
         System.out.println("Hey, dude, what do you want?  ");
         System.out.println("Write 1, if you want check are you adult ");
         System.out.println("Write 2, if you want to separate another dudes by teams ");
@@ -19,7 +19,7 @@ public class AppRunner {
         Scanner scan = new Scanner(System.in);
         int switchCase = scan.nextInt();
 
-        do {
+        while (switchCase > 0 && switchCase < 5) {
             switch (switchCase) {
                 case 1:
                     System.out.println("Stop, how old are you, dude?");
@@ -39,9 +39,7 @@ public class AppRunner {
                     System.out.println("Dude, this is error case");
                     break;
             }
-            scan = new Scanner(System.in);
             switchCase = scan.nextInt();
         }
-        while (switchCase > 0 && switchCase < 2);
     }
 }
