@@ -1,8 +1,8 @@
-package com.company.task2.user.utilit;
+package com.company.task2.user.utils;
 
 import java.util.Random;
 
-public class Team {
+public class FootballTeamGenerationUtil {
     private static String[] teams = {"Milan", "Real", "Liverpool"};
 
     public static String generateTeam() {

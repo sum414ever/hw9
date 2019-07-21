@@ -2,7 +2,7 @@ package com.company.task3;
 
 import com.company.task3.move.Movie;
 import com.company.task3.move.MovieGenerator;
-import com.company.task3.move.utilit.Genre;
+import com.company.task3.move.utils.MovieGenreGenerationUtil;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MovieProcessing {
+    final static int ACTION = 0;
+    final static int ADVENTURE = 1;
+    final static int COMEDY = 2;
+    final static int CRIME = 3;
+    final static int FANTASY = 4;
+
     public static void processingMovies() {
+
         List<Movie> first = MovieGenerator.generateMoves(50);
         List<Movie> second = MovieGenerator.generateMoves(50);
 
@@ -19,35 +26,17 @@ public class MovieProcessing {
                 second.stream())
                 .collect(Collectors.groupingBy(Movie::getGenre));
 
-        double actionAveragePrice = movies.get(Genre.getGenre(0)).stream()
+        System.out.println("The average price in " + movies.get(MovieGenreGenerationUtil.getGenre(ACTION)).size() + " films by genre " + MovieGenreGenerationUtil.getGenre(ACTION) + " is " + (int) (countAveragePriceByGenre(movies, ACTION)) + " UAH");
+        System.out.println("The average price in " + movies.get(MovieGenreGenerationUtil.getGenre(ADVENTURE)).size() + " films by genre " + MovieGenreGenerationUtil.getGenre(ADVENTURE) + " is " + (int) (countAveragePriceByGenre(movies, ADVENTURE)) + " UAH");
+        System.out.println("The average price in " + movies.get(MovieGenreGenerationUtil.getGenre(COMEDY)).size() + " films by genre " + MovieGenreGenerationUtil.getGenre(COMEDY) + " is " + (int) (countAveragePriceByGenre(movies, COMEDY)) + " UAH");
+        System.out.println("The average price in " + movies.get(MovieGenreGenerationUtil.getGenre(CRIME)).size() + " films by genre " + MovieGenreGenerationUtil.getGenre(CRIME) + " is " + (int) (countAveragePriceByGenre(movies, CRIME)) + " UAH");
+        System.out.println("The average price in " + movies.get(MovieGenreGenerationUtil.getGenre(FANTASY)).size() + " films by genre " + MovieGenreGenerationUtil.getGenre(FANTASY) + " is " + (int) (countAveragePriceByGenre(movies, FANTASY)) + " UAH");
+    }
+
+    public static double countAveragePriceByGenre(Map<String, List<Movie>> listMovies, int genre) {
+        return listMovies.get(MovieGenreGenerationUtil.getGenre(genre)).stream()
                 .mapToInt(Movie::getPrice)
                 .average()
                 .getAsDouble();
-
-        double adventureAveragePrice = movies.get(Genre.getGenre(1)).stream()
-                .mapToInt(Movie::getPrice)
-                .average()
-                .getAsDouble();
-
-        double comedyAveragePrice = movies.get(Genre.getGenre(2)).stream()
-                .mapToInt(Movie::getPrice)
-                .average()
-                .getAsDouble();
-
-        double crimeAveragePrice = movies.get(Genre.getGenre(3)).stream()
-                .mapToInt(Movie::getPrice)
-                .average()
-                .getAsDouble();
-
-        double fantasyAveragePrice = movies.get(Genre.getGenre(4)).stream()
-                .mapToInt(Movie::getPrice)
-                .average()
-                .getAsDouble();
-
-        System.out.println("The average price in " + movies.get(Genre.getGenre(0)).size() + " films by genre " + Genre.getGenre(0) + " is " + (int) (actionAveragePrice) + " UAH");
-        System.out.println("The average price in " + movies.get(Genre.getGenre(1)).size() + " films by genre " + Genre.getGenre(1) + " is " + (int) (adventureAveragePrice) + " UAH");
-        System.out.println("The average price in " + movies.get(Genre.getGenre(2)).size() + " films by genre " + Genre.getGenre(2) + " is " + (int) (comedyAveragePrice) + " UAH");
-        System.out.println("The average price in " + movies.get(Genre.getGenre(3)).size() + " films by genre " + Genre.getGenre(3) + " is " + (int) (crimeAveragePrice) + " UAH");
-        System.out.println("The average price in " + movies.get(Genre.getGenre(4)).size() + " films by genre " + Genre.getGenre(4) + " is " + (int) (fantasyAveragePrice) + " UAH");
     }
 }

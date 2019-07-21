@@ -1,8 +1,8 @@
-package com.company.task3.move.utilit;
+package com.company.task3.move.utils;
 
 import java.util.Random;
 
-public class Genre {
+public class MovieGenreGenerationUtil {
 
     private static String[] genres = {"Action", "Adventure", "Comedy", "Crime", "Fantasy"};
 

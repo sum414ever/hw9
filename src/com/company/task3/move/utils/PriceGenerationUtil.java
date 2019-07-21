@@ -1,6 +1,6 @@
-package com.company.task3.move.utilit;
+package com.company.task3.move.utils;
 
-public class Price {
+public class PriceGenerationUtil {
 
     public static Integer getPrice() {
         final int MIN_PRICE = 50;
