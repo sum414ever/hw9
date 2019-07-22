@@ -8,11 +8,11 @@ import com.company.task4.BoxProcessing;
 import java.util.Scanner;
 
 public class AppRunner {
-    static final int ONE =1;
-    static final int TWO =2;
-    static final int THREE =3;
-    static final int FOUR =4;
-    static final int FIVE =5;
+    static final int ADULT_CHECKING_TASK = 1;
+    static final int SEPARATE_BY_TEAMS = 2;
+    static final int AVERAGE_MOVIE_PRICE_TASK = 3;
+    static final int PACK_THINGS_IN_BOXES = 4;
+    static final int EXIT = 5;
 
     public void run() {
         System.out.println("Hey, dude, what do you want?  ");
@@ -26,19 +26,19 @@ public class AppRunner {
         Scanner scan = new Scanner(System.in);
         int input = scan.nextInt();
 
-        while (input != FIVE) {
+        while (input != EXIT) {
             switch (input) {
-                case ONE:
+                case ADULT_CHECKING_TASK:
                     System.out.println("Stop, how old are you, dude?");
                     AdultOnly.checkYourAge(scan.nextInt());
                     break;
-                case TWO:
+                case SEPARATE_BY_TEAMS:
                     UserProcessing.processingUsers();
                     break;
-                case THREE:
+                case AVERAGE_MOVIE_PRICE_TASK:
                     MovieProcessing.processingMovies();
                     break;
-                case FOUR:
+                case PACK_THINGS_IN_BOXES:
                     BoxProcessing.processingBox();
                     break;
                 default:
